@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<!-- <h1>This is the home page</h1> -->
+<!-- 
+ <div class="swiper product-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item1.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Iphone 10</a>
+                    </h3>
+                    <span class="item-price text-primary">$980</span>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card position-relative">
+                  <div class="image-holder">
+                    <img src="images/product-item2.jpg" alt="product-item" class="img-fluid">
+                  </div>
+                  <div class="cart-concern position-absolute">
+                    <div class="cart-button d-flex">
+                      <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                    </div>
+                  </div>
+                  <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
+                    <h3 class="card-title text-uppercase">
+                      <a href="#">Iphone 11</a>
+                    </h3>
+                    <span class="item-price text-primary">$1100</span>
+                  </div>
+                </div>
+              </div> -->
+              <head>
+                <style>
+                  .row {
+    margin-top :100px;
+}
+
+.btn{
+    width: 100%;
+}
+
+.btn button {
+    width: 100%;
+    border-radius:5px;
+    border:none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-top:6px;
+    cursor:pointer;
+}
+
+.btn i img{
+    margin-bottom:3px;
+}
+.card{
+    box-shadow: 0px 2px 5px black;
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+.card:hover{
+    transform:translateY(-15px);
+}
+
+.star{
+    font-size:20px;
+}
+.checked{
+    color:rgba(255, 196, 0)
+}
+
+
+
+                </style>
+              </head>
+    <div class="container">
+        <div class="row">
+          
+            {%for data in products %}
+           
+            
+            <div class="col-md-3">
+              <form action="{{url_for('views.addToCart')}}" methods="POST"> 
+                <div class="card">
+                    <img class="card-image-top" src="buy-2.jpg" alt="">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">{{ data['title'] }}</h2>
+                        <p class="card-text text-center">{{data['Description']}}</p>
+                        <h5 class="text-center">${{data['price']}}</h5>
+                        <div class="star text-center">
+                            <i class="fa fa-star checked"></i>
+                            <i class="fa fa-star checked"></i>
+                            <i class="fa fa-star checked"></i>
+                            <i class="fa fa-star checked"></i>
+                            <i class="fa fa-star checked"></i>
+                        </div>
+                        
+                        <h5>Qty :</h5>
+                        <input type="number" name="qty" id ="qty" value="1">
+                        <div class="btn">
+                            <!-- <input type="submit" name="itemid" value="{{data['item_id']}}">  -->
+                            <button type="submit" id="pid" name="pid" value="{{data['item_id']}}">Add<i><img src="cart-add.png" alt=""></img></i></button>
+                            <!-- <a href="/add" value="{{data['item_id']}}"></a> -->
+                        </div>
+                    </div>
+                </div>
+              </form>
+            </div>
+            
+            {% endfor %}
+
+
+
+            
+              
+            
+                       
+
+            
+        </div>
+    </div>
+{% endblock %} 

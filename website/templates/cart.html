@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+{% block title %}Cart{% endblock %}
+{% block content %}
+<!-- <h1> Inside Cart Page</h1> -->
+
+    <!-- <div class="container">
+        <div class="row"> -->
+
+
+            <!-- {%for data in products %} -->
+           
+            
+            <!-- <div class="col-md-3">
+              <form action="{{url_for('views.addToCart')}}" methods="POST"> 
+                <div class="card">
+                    <img class="card-image-top" src="buy-2.jpg" alt="">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">{{ data['title'] }}</h2>
+                        <p class="card-text text-center">{{data['Description']}}</p>
+                        <h5 class="text-center">${{data['price']}}</h5>
+                        <div class="star text-center">
+                            <i class="fa fa-star checked"></i>
+                            <i class="fa fa-star checked"></i>
+                            <i class="fa fa-star checked"></i>
+                            <i class="fa fa-star checked"></i>
+                            <i class="fa fa-star checked"></i>
+                        </div>
+                        <div class="btn">
+                             <input type="submit" name="itemid" value="{{data['item_id']}}">  
+                            <button type="submit" id="pid" name="pid" value="{{data['item_id']}}">Add<i><img src="cart-add.png" alt=""></img></i></button>
+                            <a href="/add" value="{{data['item_id']}}"></a> 
+                        </div>
+                    </div>
+                </div>
+              </form>
+            </div> -->
+            
+            <!-- {% endfor %} -->
+
+        <!-- </div>
+    </div> -->
+        <head>
+            <style>
+                .cart-page{
+                    margin: 80px auto;
+                }
+                table{
+                    width:100%;
+                    border-collapse: collapse;
+                }
+                .cart-info{
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+                th{
+                    text-align: left;
+                    padding:5px;
+                    color:#fff;
+                    background:#ff523b;
+                    font-weight: normal;
+                }
+                td{
+                    padding: 10px 5px;
+                }
+                td input{
+                    width: 40px;
+                    height: 30px;
+                    padding: 5px;
+                }
+                td a{
+                    color:#ff523b;
+                    font-size: 12px;
+                }
+                td img{
+                    width: 80px;
+                    height: 80px;
+                    margin-right: 10px;
+                }
+
+                .total-price{
+                    display: flex;
+                    justify-content: flex-end;
+                }
+
+                .total-price table{
+                    border-top: 3px solid #ff523b;
+                    width:100%;
+                    max-width: 400px;
+                }
+
+                td:last-child{
+                    text-align:right;
+                }
+                th:last-child{
+                    text-align:right;
+                }
+            </style>
+        </head>
+        <div class ="small-container cart-page">
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+                
+                {% for item in data %} 
+                <tr>
+                    <td>
+                        <div class="cart-info">
+                            <!-- <img src="images/product-item1.jpg" alt=""> -->
+                            <div>
+                                <p>{{item.title}}</p>
+                                <small>Price: {{item.price}}</small>
+                                <br>
+                                <!-- <a href="">Remove</a> -->
+                                <form action="{{url_for('views.remove')}}" methods="POST">
+                                    <button type="submit" name=itemid id=itemid value={{item.item_id}} class="btn btn-primary"> Remove
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                    <td><input type="number" value={{item.qty}}></td>
+                    <td>$ {{item.subtotalprice}}</td>
+                </tr>
+               
+                
+                {% endfor %}
+
+                <!-- <tr>
+                    <td>
+                        <div class="cart-info">
+                            <img src="images/buy-1.jpg" alt="">
+                            <div>
+                                <p>Product Title here</p>
+                                <small>Price: $50.00</small>
+                                <br>
+                                <a href="">Remove</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td><input type="number" value="1"></td>
+                    <td>$ 50.00</td>
+                </tr>
+                
+
+                <tr>
+                    <td>
+                        <div class="cart-info">
+                            <img src="images/buy-1.jpg" alt="">
+                            <div>
+                                <p>Product Title here</p>
+                                <small>Price: $50.00</small>
+                                <br>
+                                <a href="">Remove</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td><input type="number" value="1"></td>
+                    <td>$ 50.00</td>
+                </tr>
+                 -->
+
+            </table>
+
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>${{finalprice}}</td>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                    <td>${{tax}}</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>${{pricewithtax}}</td>
+                </tr>
+            </table>
+        </div>
+        <form action="/payment">
+            <button type="submit" value="submit" class="btn btn-primary"> Delivery Order
+                <!-- <a href="/payment"> Order</a> -->
+            </button>
+        </form>
+        <br>
+        <form action="/">
+            <button type="submit" value="submit" id="footerback" class="btn btn-primary"> BACK
+                <!-- <a href="/payment"> Order</a> -->
+            </button>
+        </form>
+
+        <br>
+        <form action="/updatepayment">
+            <button type="submit" value="submit" id="footerback" class="btn btn-primary"> Pick up on delivery
+                <!-- <a href="/payment"> Order</a> -->
+            </button>
+        </form>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %} 

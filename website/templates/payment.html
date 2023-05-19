@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}payment{% endblock %}
+{% block content %}
+
+
+
+
+    <h3 align="center">PAYMENT PAGE </h3>
+    <form action="/updatepayment" class="form-group" >    
+    <div class="control-group">
+        <label class="control-label">Card Type</label>
+        <div class="controls">
+            <select id="cardtype" name="cardtype">
+                <option value="credit card" selected>credit</option>
+                <option value="debit card">Debit</option>
+                <option value="Cash">Cash</option>
+              </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="add">Address:</label>
+        <br>
+        <label for="country">Country </label>
+        <input type="text" class="form-control" id="country" name="country" value= {{shippingAddress.country}} placeholder="Enter Country Name"/> 
+    </div>
+
+    <div class="form-group">
+        <label for="street1">Street 1:</label>
+        <input type="text" class="form-control" id="street1" name="street1" value={{shippingAddress.street1}} placeholder="Enter Street1"/> 
+    </div>
+
+    <div class="form-group">
+        <label for="street2">Street 2:</label>
+        <input type="text" class="form-control" id="street2" name="street2" value={{shippingAddress.street2}} placeholder="Enter Street2"/> 
+    </div>
+
+    <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" class="form-control" id="city" name="city" value={{shippingAddress.city}} placeholder="Enter city"/> 
+    </div>
+    <div class="form-group">
+        <label for="state">State:</label>
+        <input type="text" class="form-control" id="state" name="state"value={{shippingAddress.state}} placeholder="Enter state"/> 
+    </div>
+    <div class="form-group">
+        <label for="zip">Zip:</label>
+        <input type="text" class="form-control" id="zip" name="zip" value={{shippingAddress.zip}} placeholder="Enter zip"/> 
+    </div>
+
+    {% if status %}
+
+    <div class="form-group">
+        <label for="add">Card Details :</label>
+        <br>
+        <label for="cardtype">Card Type </label>
+        <input type="text" class="form-control" id="cardtype" name="cardtype" value={{paymentDetails.card_type}}  placeholder="Enter Credi or Debit"/> 
+    </div>
+
+    <div class="form-group">
+        <label for="cardno">Card Number:</label>
+        <input type="text" class="form-control" id="cardno" name="cardno" value={{paymentDetails.card_number}}  placeholder="Enter card number"/> 
+    </div>
+
+    <div class="form-group">
+        <label for="expdate">Expire Date:</label>
+        <input type="text" class="form-control" id="expdate" name="expdate" value={{paymentDetails.exp_date}} placeholder="Enter Expired Date "/> 
+    </div>
+
+    <div class="form-group">
+        <label for="name">Name on Card:</label>
+        <input type="text" class="form-control" id="name" name="name"  value={{paymentDetails.Name}} placeholder="Enter name on card"/> 
+    </div>
+
+
+    <!-- <div class="form-group">
+        <label for="email">Total Price</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"/> 
+    </div> -->
+
+    <!-- <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"/> 
+    </div>
+
+
+
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password"/> 
+    </div> -->
+
+    <!-- <div class="form-group">
+        <label for="type">Customer Type</label>
+        <input type="" class="form-control" id="password" name="password" placeholder="Enter password"/> 
+    </div> -->
+    <!-- <div class="control-group">
+        <label class="control-label">Account Type</label>
+        <div class="controls">
+            <select id="account" name="account">
+                <option value="customer" selected>Customer</option>
+                <option value="admin">Admin</option>
+              </select>
+        </div>
+    </div> -->
+    {% endif %}
+    <br/>
+    
+
+<button type="submit" value="submit" class="btn btn-primary">Pay</button>
+</form>
+
+{% endblock %} 

@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block title %}view Order{% endblock %}
+{% block content %}
+
+        <head>
+            <style>
+                .cart-page{
+                    margin: 80px auto;
+                }
+                table{
+                    width:100%;
+                    border-collapse: collapse;
+                }
+                .cart-info{
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+                th{
+                    text-align: left;
+                    padding:5px;
+                    color:#fff;
+                    background:#ff523b;
+                    font-weight: normal;
+                }
+                td{
+                    padding: 10px 5px;
+                }
+                td input{
+                    width: 40px;
+                    height: 30px;
+                    padding: 5px;
+                }
+                td a{
+                    color:#ff523b;
+                    font-size: 12px;
+                }
+                td img{
+                    width: 80px;
+                    height: 80px;
+                    margin-right: 10px;
+                }
+
+                .total-price{
+                    display: flex;
+                    justify-content: flex-end;
+                }
+
+                .total-price table{
+                    border-top: 3px solid #ff523b;
+                    width:100%;
+                    max-width: 400px;
+                }
+
+                td:last-child{
+                    text-align:right;
+                }
+                th:last-child{
+                    text-align:right;
+                }
+            </style>
+        </head>
+        <div class ="small-container cart-page">
+            <table>
+                <tr>
+                    <th>RETURN_ID</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Accept</th>
+                    <th>Reject</th>
+                    <!-- <th>Cancel</th> -->
+                    <!-- <th>Return</th> -->
+                </tr>
+                
+                {% for item in orders %} 
+                <tr>
+                    <!-- <td>
+                        <p>{{item.item_id}}</p>
+                                            
+                    </td> -->
+
+                    
+                    <td>
+                        <div class="cart-info">
+                            <!-- <img src="images/product-item1.jpg" alt=""> -->
+                            <div>
+                                <p>{{item.return_id}}</p>
+                                
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <p>{{item.title}}</p>
+                            
+                        </div>
+                    </td>
+                    <td><input type="number" value={{item.item_qty}}></td>
+                    <td>$ {{item.price}}</td>
+                    <td>
+                        <form action="{{url_for('views.adminaccept')}}" methods="POST">
+                        <button type="submit" name=returnid id=returnid value={{item.return_id}} class="btn btn-primary"> Accept
+                           
+                        </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{url_for('views.adminreject')}}" methods="POST">
+                        <button type="submit" name=returnid id=returnid value={{item.return_id}} class="btn btn-primary"> Reject
+                           
+                        </button>
+                    </form>
+                    </td>
+                </tr>
+               
+                
+                {% endfor %}
+                
+
+            
+
+            
+            </table>
+        
+        </div>
+        <form action="/">
+            <button type="submit" value="submit" id="footerback" class="btn btn-primary"> BACK
+                <!-- <a href="/payment"> Order</a> -->
+            </button>
+        </form>
+{% endblock %} 

@@ -1,0 +1,39 @@
+.row {
+    margin-top :100px;
+}
+
+.btn{
+    width: 100%;
+}
+
+.btn button {
+    width: 100%;
+    border-radius:5px;
+    border:none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-top:6px;
+    cursor:pointer;
+}
+
+.btn i img{
+    margin-bottom:3px;
+}
+.card{
+    box-shadow: 0px 2px 5px black;
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+.card:hover{
+    transform:translateY(-15px);
+}
+
+.star{
+    font-size:20px;
+}
+.checked{
+    color:rgba(255, 196, 0)
+}
+
+

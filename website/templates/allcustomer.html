@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}View Customers{% endblock %}
+{% block content %}
+
+        <head>
+            <style>
+                .cart-page{
+                    margin: 80px auto;
+                }
+                table{
+                    width:100%;
+                    border-collapse: collapse;
+                }
+                .cart-info{
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+                th{
+                    text-align: left;
+                    padding:5px;
+                    color:#fff;
+                    background:#ff523b;
+                    font-weight: normal;
+                }
+                td{
+                    padding: 10px 5px;
+                }
+                td input{
+                    width: 40px;
+                    height: 30px;
+                    padding: 5px;
+                }
+                td a{
+                    color:#ff523b;
+                    font-size: 12px;
+                }
+                td img{
+                    width: 80px;
+                    height: 80px;
+                    margin-right: 10px;
+                }
+
+                .total-price{
+                    display: flex;
+                    justify-content: flex-end;
+                }
+
+                .total-price table{
+                    border-top: 3px solid #ff523b;
+                    width:100%;
+                    max-width: 400px;
+                }
+
+                td:last-child{
+                    text-align:right;
+                }
+                th:last-child{
+                    text-align:right;
+                }
+                #footerback{
+                    text-align:right;
+                }
+            </style>
+        </head>
+        <div class ="small-container cart-page">
+            <table>
+                <tr>
+                    <th>SNO</th>
+                    <th>First_Name</th>
+                    
+                    <th>Email_Id</th>
+                    <th>phone no</th>
+                    
+                    
+                </tr>
+      
+                {% for order in data %} 
+                
+                <tr>
+                    <td>
+                        <div class="cart-info">
+                            <!-- <img src="images/product-item1.jpg" alt=""> -->
+                            <div>
+                                <p>{{data.index(order)+1}}</p>
+                                
+                            </div>
+                        </div>
+                    </td>
+                    <td><p>{{order.firstName}}</p></td>
+                    
+                    <td>{{order.email}}</td>
+                    
+                    <td>
+                        
+                        
+                           <p> {{order.phno}}</p>
+                            
+                            
+                        
+                            <!-- <button type="submit" name=orderid id=orderid value={{order.order_id}} class="btn btn-primary"> view Order
+                               
+                            </button> -->
+                            
+                        
+                    </td>
+                </tr>
+               
+                
+                {% endfor %}
+
+       
+            </table>
+
+        <form action="/">
+            <button type="submit" value="submit" id="footerback" class="btn btn-primary"> BACK
+                <!-- <a href="/payment"> Order</a> -->
+            </button>
+        </form>
+        </div>
+
+
+{% endblock %} 
